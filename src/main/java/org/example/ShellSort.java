@@ -7,16 +7,17 @@ import java.util.Random;
 public class ShellSort implements AM {
     public void run(AMInfo info) {
         int[] array = generateRandomArray(100000);  // Збільшення розміру масиву до 100000
-        System.out.println("Unsorted array: ");
-        printArray(array);
+        System.out.println("Unsorted array (first 20 elements): ");
+        printArray(array, 20);
 
         long startTime = System.currentTimeMillis();
         shellSort(array);
         long endTime = System.currentTimeMillis();
 
-        System.out.println("Sorted array: ");
-        printArray(array);
+        System.out.println("Sorted array (first 20 elements): ");
+        printArray(array, 20);
 
+        System.out.println("Array length: " + array.length);
         System.out.println("Sorting took " + (endTime - startTime) + " milliseconds.");
     }
 
@@ -43,8 +44,8 @@ public class ShellSort implements AM {
         }
     }
 
-    private void printArray(int[] array) {
-        for (int i = 0; i < Math.min(array.length, 20); i++) {
+    private void printArray(int[] array, int limit) {
+        for (int i = 0; i < Math.min(array.length, limit); i++) {
             System.out.print(array[i] + " ");
         }
         System.out.println();
