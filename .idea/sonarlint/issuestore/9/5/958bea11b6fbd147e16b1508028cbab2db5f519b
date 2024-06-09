@@ -1,10 +1,10 @@
 
 m	java:S106
-"+Replace this use of System.out by a logger.(Û¾èÆ8®Éðîÿ1J$1f78db68-c64b-4b80-bc50-b527e7365ffb
-r	java:S106"+Replace this use of System.out by a logger.(Çîü‰úÿÿÿÿ8®Éðîÿ1J$a69b446e-bcdd-4661-867f-0872446d1dd6
-m	java:S106"+Replace this use of System.out by a logger.(Èƒ€Å8øÉýîÿ1J$bc6f7cc2-fa37-4e11-870c-348b0db502d1
-r	java:S106"+Replace this use of System.out by a logger.(¡ÝÇ˜þÿÿÿÿ8øÉýîÿ1J$266b8a2e-6b22-437e-8c92-7a52a1faa1b9
+"+Replace this use of System.out by a logger.(Û¾èÆ8®Éðîÿ1J$bd94fb4c-d11c-495a-b5a4-422a2eb1167e
+r	java:S106"+Replace this use of System.out by a logger.(Çîü‰úÿÿÿÿ8®Éðîÿ1J$314da0e6-66fe-4296-941b-01aa9e7164e2
+m	java:S106"+Replace this use of System.out by a logger.(Èƒ€Å8øÉýîÿ1J$713be667-525c-41a7-8d59-88b5673a5a45
+r	java:S106"+Replace this use of System.out by a logger.(¡ÝÇ˜þÿÿÿÿ8øÉýîÿ1J$dba2e098-9c29-4f6c-9f3f-c75c01808547
 f
-java:S2119"Save and re-use this "Random".(šŸ«íøÿÿÿÿ8ùÉýîÿ1J$2b0d98c5-3684-4499-a3ef-256585ad9e67
-r	java:S1061"+Replace this use of System.out by a logger.(¦Öç²ûÿÿÿÿ8ûÉýîÿ1J$ae6c0e33-c547-4bcc-94e2-1ea21c4c03f2
-r	java:S1063"+Replace this use of System.out by a logger.(ªÓ¼áþÿÿÿÿ8ûÉýîÿ1J$f94ce7ee-52df-4468-b563-7eac8ff5a9c5
+java:S2119"Save and re-use this "Random".(šŸ«íøÿÿÿÿ8ùÉýîÿ1J$4ba69510-58cc-45be-8180-394f76ff6f0f
+r	java:S1061"+Replace this use of System.out by a logger.(¦Öç²ûÿÿÿÿ8ûÉýîÿ1J$f5570569-88c2-438c-a115-1f36f7d630cb
+r	java:S1063"+Replace this use of System.out by a logger.(ªÓ¼áþÿÿÿÿ8ûÉýîÿ1J$fc16b269-67f5-415f-8ed0-09c59607fd21
