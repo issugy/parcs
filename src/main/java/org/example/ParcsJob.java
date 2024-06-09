@@ -1,13 +1,16 @@
 package org.example;
 
-import parcs.*;
-import java.nio.file.*;
+import parcs.AMInfo;
+import parcs.task;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class ParcsJob {
     public static void main(String[] args) {
         try {
-            String serverFilePath = "out/server";
+            String serverFilePath = "server";
+            System.out.println("Attempting to read server file from path: " + serverFilePath);
             String serverIP = Files.readString(Paths.get(serverFilePath)).trim();
             System.out.println("Server IP read from file: " + serverIP);
 

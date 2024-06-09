@@ -1,5 +1,9 @@
 
-F	java:S106	"+Replace this use of System.out by a logger.(ÿ¾ÓK8‡…Øíÿ1
-G	java:S106"+Replace this use of System.out by a logger.(²âƒ™8‡…Øíÿ1
-G	java:S106+"+Replace this use of System.out by a logger.(Ù©È±8‰…Øíÿ1
-L	java:S106-"+Replace this use of System.out by a logger.(ªÓ¼áþÿÿÿÿ8‰…Øíÿ1
+l	java:S106
+"+Replace this use of System.out by a logger.(ÿ¾ÓK8‰…Øíÿ1J$aa6ba9bd-d009-4b92-a675-d368fd8dd11d
+m	java:S106"+Replace this use of System.out by a logger.(²âƒ™8§Éðîÿ1J$9278a855-f0e7-4df6-b483-7b4114122a40
+r	java:S106"+Replace this use of System.out by a logger.(¡ÝÇ˜þÿÿÿÿ8§Éðîÿ1J$c2982f6f-55c3-4fba-9115-8ebd92ce9431
+f
+java:S2119"Save and re-use this "Random".(šŸ«íøÿÿÿÿ8ªÉðîÿ1J$d123c41b-7567-4c61-9cc2-fd9ccc8ae342
+r	java:S1060"+Replace this use of System.out by a logger.(¦Öç²ûÿÿÿÿ8®Éðîÿ1J$25cf79be-288f-4c47-887c-4e5e38378e84
+r	java:S1062"+Replace this use of System.out by a logger.(ªÓ¼áþÿÿÿÿ8®Éðîÿ1J$ccdd7d46-70aa-4f1d-a962-4ab67a503ceb
