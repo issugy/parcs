@@ -6,7 +6,7 @@ import java.util.Random;
 
 public class ShellSort implements AM {
     public void run(AMInfo info) {
-        int[] array = generateRandomArray(1000000);  // Збільшення розміру масиву до 100000
+        int[] array = generateRandomArray(10_000_000);  // Збільшення розміру масиву до 100000
         System.out.println("Unsorted array (first 20 elements): ");
         printArray(array, 20);
 
@@ -25,7 +25,7 @@ public class ShellSort implements AM {
         Random rand = new Random();
         int[] array = new int[size];
         for (int i = 0; i < size; i++) {
-            array[i] = rand.nextInt(1000000) - 1000000;  // Випадкові числа від -5000 до 4999
+            array[i] = rand.nextInt(10_000_000) - 10_000_000;  // Випадкові числа від -5000 до 4999
         }
         return array;
     }
