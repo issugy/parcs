@@ -1,7 +1,7 @@
 package org.example;
 
-import parcs.*;
-import java.util.Arrays;
+import parcs.AM;
+import parcs.AMInfo;
 
 public class ShellSort implements AM {
     public void run(AMInfo info) {

@@ -1,10 +1,16 @@
 package org.example;
 
-import parcs.*;
+import parcs.AMInfo;
+import parcs.channel;
+import parcs.point;
+import parcs.task;
+
 import java.nio.file.*;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 public class ParcsJob {
     public static void main(String[] args) {
@@ -21,7 +27,7 @@ public class ParcsJob {
             AMInfo info = new AMInfo(curtask, null);
 
             int[] array = generateRandomArray(100000);
-            int numberOfWorkers = 4;  // Задайте кількість воркерів
+            int numberOfWorkers = 2;  // Задайте кількість воркерів
 
             long startTime = System.currentTimeMillis();
             int[] sortedArray = parallelShellSort(info, array, numberOfWorkers);
@@ -77,7 +83,8 @@ public class ParcsJob {
             point.execute(ShellSort.class.getCanonicalName());
 
             System.out.println("writing to channel");
-            channel.write(array, rangeStart, rangeEnd - rangeStart);
+            channel.write(rangeStart);
+            channel.write(rangeEnd);
         }
 
         System.out.println("waiting for results");
