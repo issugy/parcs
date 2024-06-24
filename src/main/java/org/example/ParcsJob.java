@@ -1,26 +1,38 @@
 package org.example;
 
-import parcs.AMInfo;
-import parcs.task;
+import parcs.*;
+import java.nio.file.*;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ParcsJob {
     public static void main(String[] args) {
         try {
-            String serverFilePath = "server";
+            String serverFilePath = "out/server";
             System.out.println("Attempting to read server file from path: " + serverFilePath);
             String serverIP = Files.readString(Paths.get(serverFilePath)).trim();
             System.out.println("Server IP read from file: " + serverIP);
 
-            // Створюємо завдання
+            // Створення завдання
             System.out.println("Creating task...");
             task curtask = new task();
             curtask.addJarFile("ShellSort.jar");
             AMInfo info = new AMInfo(curtask, null);
-            System.out.println("Running ShellSort...");
-            (new ShellSort()).run(info);
+
+            int[] array = generateRandomArray(100000);
+            int numberOfWorkers = 4;  // Задайте кількість воркерів
+
+            long startTime = System.currentTimeMillis();
+            int[] sortedArray = parallelShellSort(info, array, numberOfWorkers);
+            long endTime = System.currentTimeMillis();
+
+            System.out.println("Sorted array (first 20 elements): ");
+            printArray(sortedArray, 20);
+
+            System.out.println("Array length: " + sortedArray.length);
+            System.out.println("Sorting took " + (endTime - startTime) + " milliseconds.");
+
             curtask.end();
             System.out.println("Task ended.");
         } catch (IOException e) {
@@ -30,5 +42,62 @@ public class ParcsJob {
             System.err.println("Unexpected error: " + e.getMessage());
             e.printStackTrace();
         }
+    }
+
+    private static int[] generateRandomArray(int size) {
+        Random rand = new Random();
+        int[] array = new int[size];
+        for (int i = 0; i < size; i++) {
+            array[i] = rand.nextInt(10000) - 5000;
+        }
+        return array;
+    }
+
+    private static int[] parallelShellSort(AMInfo info, int[] array, int numberOfWorkers) throws Exception {
+        int n = array.length;
+        int batchSize = n / numberOfWorkers;
+        List<channel> channels = new ArrayList<>();
+
+        System.out.println("batchSize = " + batchSize);
+        for (int index = 0; index < numberOfWorkers; ++index) {
+            int rangeStart = index * batchSize;
+            int rangeEnd = (index + 1) * batchSize;
+
+            if (index == numberOfWorkers - 1) {
+                rangeEnd = n; // Останній воркер обробляє залишок масиву
+            }
+
+            System.out.println("creating point for range [" + rangeStart + ", " + rangeEnd + "]");
+            point point = info.createPoint();
+            System.out.println("creating channel");
+            channel channel = point.createChannel();
+            channels.add(channel);
+
+            System.out.println("executing point");
+            point.execute(ShellSort.class.getCanonicalName());
+
+            System.out.println("writing to channel");
+            channel.write(array, rangeStart, rangeEnd - rangeStart);
+        }
+
+        System.out.println("waiting for results");
+        List<int[]> sortedSubarrays = new ArrayList<>();
+        for (channel ch : channels) {
+            sortedSubarrays.add((int[]) ch.readObject());
+        }
+
+        return mergeSortedArrays(sortedSubarrays);
+    }
+
+    private static int[] mergeSortedArrays(List<int[]> sortedSubarrays) {
+        // Реалізуйте метод злиття підмасивів
+        return sortedSubarrays.stream().flatMapToInt(Arrays::stream).toArray();
+    }
+
+    private static void printArray(int[] array, int limit) {
+        for (int i = 0; i < Math.min(array.length, limit); i++) {
+            System.out.print(array[i] + " ");
+        }
+        System.out.println();
     }
 }

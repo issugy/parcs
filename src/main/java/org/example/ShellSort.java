@@ -1,33 +1,27 @@
 package org.example;
 
-import parcs.AM;
-import parcs.AMInfo;
-import java.util.Random;
+import parcs.*;
+import java.util.Arrays;
 
 public class ShellSort implements AM {
     public void run(AMInfo info) {
-        int[] array = generateRandomArray(10_000_000);  // Збільшення розміру масиву до 100000
-        System.out.println("Unsorted array (first 20 elements): ");
+        System.out.println("Reading from channel...");
+        int[] array = (int[]) info.parent.readObject();
+
+        System.out.println("Unsorted subarray (first 20 elements): ");
         printArray(array, 20);
 
         long startTime = System.currentTimeMillis();
         shellSort(array);
         long endTime = System.currentTimeMillis();
 
-        System.out.println("Sorted array (first 20 elements): ");
+        System.out.println("Sorted subarray (first 20 elements): ");
         printArray(array, 20);
 
-        System.out.println("Array length: " + array.length);
+        System.out.println("Subarray length: " + array.length);
         System.out.println("Sorting took " + (endTime - startTime) + " milliseconds.");
-    }
 
-    private int[] generateRandomArray(int size) {
-        Random rand = new Random();
-        int[] array = new int[size];
-        for (int i = 0; i < size; i++) {
-            array[i] = rand.nextInt(10_000_000) - 10_000_000;  // Випадкові числа від -5000 до 4999
-        }
-        return array;
+        info.parent.write(array);
     }
 
     public static void shellSort(int[] array) {
