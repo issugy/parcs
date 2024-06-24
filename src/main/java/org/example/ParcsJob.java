@@ -5,8 +5,9 @@ import parcs.channel;
 import parcs.point;
 import parcs.task;
 
-import java.nio.file.*;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;

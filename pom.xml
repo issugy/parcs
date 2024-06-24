@@ -8,6 +8,17 @@
     <artifactId>parcs</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <dependencies>
+        <!-- Other dependencies -->
+        <dependency>
+            <groupId>com.parcs</groupId>
+            <artifactId>parcs</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/src/libs/parcs.jar</systemPath>
+        </dependency>
+    </dependencies>
+
     <properties>
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
